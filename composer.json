@@ -1,0 +1,9 @@
+{
+    "name": "autumn/tools",
+    "description": "Tools plugin for OctoberCMS",
+    "require": {
+        "ellipsesynergie/api-response": "~0.13",
+        "barryvdh/laravel-cors": "~0.7"
+    },
+    "minimum-stability": "dev"
+}
