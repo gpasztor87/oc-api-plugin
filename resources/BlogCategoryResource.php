@@ -2,10 +2,10 @@
 
 use Illuminate\Routing\Controller;
 use EllipseSynergie\ApiResponse\Contracts\Response;
-use Autumn\Tools\Transformers\CategoryTransformer;
+use Autumn\Tools\Transformers\BlogCategoryTransformer;
 use RainLab\Blog\Models\Category;
 
-class CategoryResource extends Controller
+class BlogCategoryResource extends Controller
 {
     /**
      * @var array
@@ -24,13 +24,13 @@ class CategoryResource extends Controller
     {
         $categories = Category::all();
 
-        return $this->response->withCollection($categories, new CategoryTransformer);
+        return $this->response->withCollection($categories, new BlogCategoryTransformer);
     }
 
     public function show($id)
     {
         $category = Category::find($id);
 
-        return $this->response->withItem($category, new CategoryTransformer);
+        return $this->response->withItem($category, new BlogCategoryTransformer);
     }
 }
