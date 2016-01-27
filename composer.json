@@ -1,6 +1,7 @@
 {
     "name": "autumn/tools",
     "description": "Tools plugin for OctoberCMS",
+    "keywords": ["october", "cms", "api", "fractal"],
     "require": {
         "ellipsesynergie/api-response": "~0.13",
         "barryvdh/laravel-cors": "~0.7"
