@@ -6,7 +6,7 @@ use League\Fractal\TransformerAbstract;
 class BlogPostTransformer extends TransformerAbstract
 {
     protected $defaultIncludes = [
-        'featured_images'
+        'featured_images',
     ];
 
     public function transform(Post $post)
@@ -18,7 +18,8 @@ class BlogPostTransformer extends TransformerAbstract
             'excerpt' => $post->excerpt,
             'content' => $post->content,
             'published' => $post->published,
-            'published_at' => $post->published_at
+            'published_at' => $post->published_at,
+            'categories' => $post->categories
         ];
     }
 

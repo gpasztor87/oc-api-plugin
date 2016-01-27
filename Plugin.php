@@ -38,7 +38,8 @@ class Plugin extends PluginBase
     public function registerAPIResources()
     {
         return [
-            'blog/categories' => 'Autumn\Tools\Resources\BlogCategoryResource'
+            'blog/categories' => 'Autumn\Tools\Resources\BlogCategoryResource',
+            'blog/posts'      => 'Autumn\Tools\Resources\BlogPostResource',
         ];
     }
 }

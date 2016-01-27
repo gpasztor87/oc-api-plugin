@@ -1,24 +1,15 @@
 <?php namespace Autumn\Tools\Resources;
 
-use Illuminate\Routing\Controller;
-use EllipseSynergie\ApiResponse\Contracts\Response;
+use Autumn\Tools\Classes\ApiController;
 use Autumn\Tools\Transformers\BlogCategoryTransformer;
 use RainLab\Blog\Models\Category;
 
-class BlogCategoryResource extends Controller
+class BlogCategoryResource extends ApiController
 {
     /**
      * @var array
      */
     public $publicActions = ['index', 'show'];
-
-    /**
-     * @param $response Response
-     */
-    public function __construct(Response $response = null)
-    {
-        $this->response = $response;
-    }
 
     public function index()
     {
