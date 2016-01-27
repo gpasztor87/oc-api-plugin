@@ -1,10 +1,10 @@
 <?php namespace Autumn\Tools\Resources;
 
-use Autumn\Tools\Classes\ApiController;
+use Autumn\Tools\Classes\ResourceBase;
 use Autumn\Tools\Transformers\BlogCategoryTransformer;
 use RainLab\Blog\Models\Category;
 
-class BlogCategoryResource extends ApiController
+class BlogCategoryResource extends ResourceBase
 {
     /**
      * @var array

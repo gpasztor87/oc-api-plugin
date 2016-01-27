@@ -1,10 +1,10 @@
 <?php namespace Autumn\Tools\Resources;
 
-use Autumn\Tools\Classes\ApiController;
+use Autumn\Tools\Classes\ResourceBase;
 use Autumn\Tools\Transformers\BlogPostTransformer;
 use RainLab\Blog\Models\Post;
 
-class BlogPostResource extends ApiController
+class BlogPostResource extends ResourceBase
 {
     /**
      * @var array
