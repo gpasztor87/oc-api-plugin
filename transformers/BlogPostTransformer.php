@@ -18,15 +18,14 @@ class BlogPostTransformer extends TransformerAbstract
             'excerpt' => $post->excerpt,
             'content' => $post->content,
             'published' => $post->published,
-            'published_at' => $post->published_at,
-            'categories' => $post->categories
+            'published_at' => $post->published_at->toDateTimeString(),
+            'categories' => $post->categories()->get(['id', 'name', 'slug']),
+            'author' => $post->user()->get(['id', 'first_name', 'last_name', 'login', 'email'])
         ];
     }
 
     public function includeFeaturedImages(Post $post)
     {
-        $images = $post->featured_images;
-
-        return $this->collection($images, new SystemFileTransformer);
+        return $this->collection($post->featured_images, new SystemFileTransformer);
     }
 }
