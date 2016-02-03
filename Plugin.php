@@ -2,6 +2,7 @@
 
 use App;
 use System\Classes\PluginBase;
+use Illuminate\Foundation\AliasLoader;
 
 /**
  * Tools Plugin Information File
@@ -31,8 +32,11 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
+        $alias = AliasLoader::getInstance();
+        $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
+
         App::register('Barryvdh\Cors\ServiceProvider');
-        App::register('EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider');
+        App::register('Spatie\Fractal\FractalServiceProvider');
     }
 
     public function registerAPIResources()

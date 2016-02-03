@@ -26,6 +26,6 @@ class BlogPostTransformer extends TransformerAbstract
 
     public function includeFeaturedImages(Post $post)
     {
-        return $this->collection($post->featured_images, new SystemFileTransformer);
+        return $this->collection($post->featured_images, new SystemFileTransformer, 'featured_images');
     }
 }

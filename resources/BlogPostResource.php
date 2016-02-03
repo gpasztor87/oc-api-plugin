@@ -20,8 +20,21 @@ class BlogPostResource extends ResourceBase
 
     public function show($id)
     {
-        $post = Post::find($id);
+        $query = Post::isPublished();
 
-        return $this->response->withItem($post, new BlogPostTransformer);
+        $query->with([
+            'user' => function($user) {
+                $user->select('id', 'first_name', 'last_name', 'email');
+
+            },
+            'categories' => function($category) {
+                $category->select('name', 'slug');
+            },
+            'featured_images'
+        ]);
+
+        return $query->find($id);
+
+        //return $this->response->withItem($post, new BlogPostTransformer);
     }
 }

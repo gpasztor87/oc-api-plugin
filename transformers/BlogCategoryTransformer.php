@@ -21,8 +21,6 @@ class BlogCategoryTransformer extends TransformerAbstract
 
     public function includePosts(Category $category)
     {
-        $posts = $category->posts;
-
-        return $this->collection($posts, new BlogPostTransformer);
+        return $this->collection($category->posts, new BlogPostTransformer, 'posts');
     }
 }
