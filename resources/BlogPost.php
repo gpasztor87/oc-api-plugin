@@ -34,7 +34,7 @@ class BlogPost extends ApiController
         $post = Post::find($id);
 
         if (!$post) {
-            return $this->respondNoContent();
+            return $this->respondNotFound();
         }
 
         return $this->respond(

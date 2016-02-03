@@ -34,7 +34,7 @@ class BlogCategory extends ApiController
         $category = Category::find($id);
 
         if (!$category) {
-            return $this->respondNoContent();
+            return $this->respondNotFound();
         }
 
         return $this->respond(
