@@ -6,7 +6,7 @@ use RainLab\Blog\Models\Category;
 class BlogCategoryTransformer extends TransformerAbstract
 {
 
-    protected $defaultIncludes = [
+    protected $availableIncludes = [
         'posts'
     ];
 

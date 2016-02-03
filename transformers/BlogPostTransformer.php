@@ -5,7 +5,7 @@ use League\Fractal\TransformerAbstract;
 
 class BlogPostTransformer extends TransformerAbstract
 {
-    protected $defaultIncludes = [
+    protected $availableIncludes = [
         'featured_images',
     ];
 
@@ -19,8 +19,6 @@ class BlogPostTransformer extends TransformerAbstract
             'content' => $post->content,
             'published' => $post->published,
             'published_at' => $post->published_at->toDateTimeString(),
-            'categories' => $post->categories()->get(['id', 'name', 'slug']),
-            'author' => $post->user()->get(['id', 'first_name', 'last_name', 'login', 'email'])
         ];
     }
 
