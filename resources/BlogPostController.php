@@ -1,11 +1,11 @@
 <?php namespace Autumn\Tools\Resources;
 
 use Autumn\Tools\Classes\ApiController;
-use Autumn\Tools\Transformers\BlogCategoryTransformer;
-use RainLab\Blog\Models\Category;
+use Autumn\Tools\Transformers\BlogPostTransformer;
+use RainLab\Blog\Models\Post;
 use Spatie\Fractal\ArraySerializer;
 
-class BlogCategory extends ApiController
+class BlogPostController extends ApiController
 {
     /**
      * @var array
@@ -14,16 +14,16 @@ class BlogCategory extends ApiController
 
     public function index()
     {
-        $categories = Category::all();
+        $posts = Post::all();
 
-        if (!$categories) {
+        if (!$posts) {
             return $this->respondNoContent();
         }
 
         return $this->respond(
             fractal()
-                ->collection($categories, new BlogCategoryTransformer())
-                ->parseIncludes(['posts'])
+                ->collection($posts, new BlogPostTransformer())
+                ->parseIncludes(['featured_images'])
                 ->serializeWith(new ArraySerializer())
                 ->toArray()
         );
@@ -31,16 +31,16 @@ class BlogCategory extends ApiController
 
     public function show($id)
     {
-        $category = Category::find($id);
+        $post = Post::find($id);
 
-        if (!$category) {
+        if (!$post) {
             return $this->respondNotFound();
         }
 
         return $this->respond(
             fractal()
-                ->item($category, new BlogCategoryTransformer())
-                ->parseIncludes(['posts'])
+                ->item($post, new BlogPostTransformer())
+                ->parseIncludes(['featured_images'])
                 ->serializeWith(new ArraySerializer())
                 ->toArray()
         );

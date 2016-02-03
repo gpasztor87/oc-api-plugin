@@ -62,6 +62,20 @@ class ApiManager
             $resource = App::make($class);
             $publicActions = $resource->publicActions ?:[];
 
+            if (method_exists($resource, 'getAdditionalRoutes')) {
+                $routes = $resource->getAdditionalRoutes();
+                foreach($routes as $_url => $args) {
+                    if (!$routeName = array_get($args, 'name')) {
+                        $routeName = 'api.v1.' . strtolower($url) . '.' . strtolower($args['handler']);
+                    }
+
+                    app('router')->{$args['verb']}($_url, [
+                        'as' => $routeName,
+                        'uses' => $class . '@' . $args['handler']
+                    ]);
+                }
+            }
+
             Route::resource($url, $class, ['only' => $publicActions]);
         }
     }
