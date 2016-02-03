@@ -35,7 +35,6 @@ class Plugin extends PluginBase
         $alias = AliasLoader::getInstance();
         $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
 
-        App::register('Barryvdh\Cors\ServiceProvider');
         App::register('Spatie\Fractal\FractalServiceProvider');
     }
 
