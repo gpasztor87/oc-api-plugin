@@ -1,7 +1,7 @@
 {
     "name": "autumn/tools",
     "description": "Tools plugin for OctoberCMS",
-    "keywords": ["october", "cms", "api", "fractal"],
+    "keywords": ["october", "cms", "octobercms", "api", "fractal"],
     "require": {
         "spatie/laravel-fractal": "^1.7"
     },
