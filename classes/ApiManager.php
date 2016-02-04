@@ -1,4 +1,4 @@
-<?php namespace Autumn\Tools\Classes;
+<?php namespace Autumn\Api\Classes;
 
 use App;
 use Route;

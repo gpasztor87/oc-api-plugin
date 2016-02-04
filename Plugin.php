@@ -1,11 +1,11 @@
-<?php namespace Autumn\Tools;
+<?php namespace Autumn\Api;
 
 use App;
 use System\Classes\PluginBase;
 use Illuminate\Foundation\AliasLoader;
 
 /**
- * Tools Plugin Information File
+ * Api Plugin Information File
  */
 class Plugin extends PluginBase
 {
@@ -18,10 +18,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Tools',
+            'name'        => 'Api',
             'description' => 'No description provided yet...',
             'author'      => 'Autumn',
-            'icon'        => 'icon-suitcase'
+            'icon'        => 'icon-paper-plane'
         ];
     }
 
@@ -36,13 +36,5 @@ class Plugin extends PluginBase
         $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
 
         App::register('Spatie\Fractal\FractalServiceProvider');
-    }
-
-    public function registerAPIResources()
-    {
-        return [
-            'blog/categories' => 'Autumn\Tools\Resources\BlogCategoryController',
-            'blog/posts'      => 'Autumn\Tools\Resources\BlogPostController',
-        ];
     }
 }

@@ -1,5 +1,4 @@
-<?php namespace Autumn\Tools\Traits;
-
+<?php namespace Autumn\Api\Traits;
 
 trait AdditionalRoutes
 {
