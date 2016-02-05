@@ -26,11 +26,11 @@ class Plugin extends PluginBase
     }
 
     /**
-     * Boot method, called right before the request route.
+     * Register method, called when the plugin is first registered.
      *
-     * @return array
+     * @return void
      */
-    public function boot()
+    public function register()
     {
         $alias = AliasLoader::getInstance();
         $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
