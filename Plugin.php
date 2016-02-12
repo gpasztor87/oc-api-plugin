@@ -37,4 +37,11 @@ class Plugin extends PluginBase
 
         App::register('Spatie\Fractal\FractalServiceProvider');
     }
+
+    public function registerAPIResources()
+    {
+        return [
+            'auth' => \Autumn\Api\Resources\AuthController::class,
+        ];
+    }
 }
