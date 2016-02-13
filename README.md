@@ -1,3 +1,3 @@
 # Api plugin
 
-This plugin allows to add REST API routes to any resources.
+Tools for building RESTful HTTP + JSON APIs for OctoberCMS.

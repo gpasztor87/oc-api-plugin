@@ -19,7 +19,7 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Api',
-            'description' => 'No description provided yet...',
+            'description' => 'Tools for building RESTful HTTP + JSON APIs.',
             'author'      => 'Autumn',
             'icon'        => 'icon-paper-plane'
         ];
