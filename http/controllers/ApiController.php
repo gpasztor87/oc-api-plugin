@@ -1,4 +1,4 @@
-<?php namespace Autumn\Api\Classes;
+<?php namespace Autumn\Api\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;

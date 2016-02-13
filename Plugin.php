@@ -48,7 +48,7 @@ class Plugin extends PluginBase
     public function registerAPIResources()
     {
         return [
-            'auth' => 'Autumn\Api\Resources\AuthController',
+            'auth' => 'Autumn\Api\Http\Controllers\AuthController',
         ];
     }
 }
