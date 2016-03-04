@@ -4,6 +4,7 @@
     "keywords": ["october", "cms", "octobercms", "api", "fractal", "authentication", "json web token", "jwt"],
     "require": {
         "spatie/laravel-fractal": "^1.7",
+        "barryvdh/laravel-cors": "^0.7.1",
         "tymon/jwt-auth": "0.5.*"
     },
     "minimum-stability": "dev"

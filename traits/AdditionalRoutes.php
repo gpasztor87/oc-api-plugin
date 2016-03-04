@@ -15,7 +15,7 @@ trait AdditionalRoutes
      * @param string $handler
      * @param string $url
      * @param string $verb
-     * @param null $name
+     * @param string|null $name
      */
     public function addAdditionalRoute($handler, $url, $verb = 'get', $name = null)
     {

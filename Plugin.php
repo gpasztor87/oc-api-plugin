@@ -41,6 +41,7 @@ class Plugin extends PluginBase
         $alias->alias('JWTAuth', 'Tymon\JWTAuth\Facades\JWTAuth');
 
         App::register('Spatie\Fractal\FractalServiceProvider');
+        App::register('Barryvdh\Cors\ServiceProvider');
         App::register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
         App::register('Autumn\Api\ApiServiceProvider');
     }
