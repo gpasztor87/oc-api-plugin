@@ -22,15 +22,11 @@ class AuthController extends ApiController
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                $this->setStatusCode(401);
-
-                return $this->respondWithError('invalid_credentials');
+                return $this->setStatusCode(401)->respondWithError('invalid_credentials');
             }
         }
         catch (JWTException $ex) {
-            $this->setStatusCode(500);
-
-            return $this->respondWithError('could_not_create_token');
+            return $this->setStatusCode(500)->respondWithError('could_not_create_token');
         }
 
         return $this->respond(compact('token'));
@@ -47,9 +43,7 @@ class AuthController extends ApiController
         $validator = $this->validator($data);
 
         if ($validator->fails()) {
-            $this->setStatusCode(400);
-
-            return $this->respondWithError($validator->getMessageBag());
+            return $this->setStatusCode(400)->respondWithError($validator->getMessageBag());
         }
 
         $user = User::create($data);

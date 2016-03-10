@@ -3,7 +3,7 @@
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-class ApiController extends Controller
+abstract class ApiController extends Controller
 {
     /**
      * Http status code.
@@ -22,7 +22,7 @@ class ApiController extends Controller
      *
      * @return int
      */
-    public function getStatusCode()
+    protected function getStatusCode()
     {
         return $this->statusCode;
     }
@@ -33,9 +33,10 @@ class ApiController extends Controller
      * @param int $statusCode
      * @return $this
      */
-    public function setStatusCode($statusCode)
+    protected function setStatusCode($statusCode)
     {
         $this->statusCode = $statusCode;
+
         return $this;
     }
 
@@ -46,7 +47,7 @@ class ApiController extends Controller
      * @param array $headers
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respond($data = [], array $headers = [])
+    protected function respond($data = [], array $headers = [])
     {
         return response()->json($data, $this->getStatusCode(), $headers);
     }
@@ -57,7 +58,7 @@ class ApiController extends Controller
      * @param string|null $message
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondWithError($message = null)
+    protected function respondWithError($message = null)
     {
         $statusCode = $this->getStatusCode();
         $message = $message ?: Response::$statusTexts[$statusCode];
@@ -75,7 +76,7 @@ class ApiController extends Controller
      * @param array $headers
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondCreated($data = [], array $headers = [])
+    protected function respondCreated($data = [], array $headers = [])
     {
         return $this->setStatusCode(Response::HTTP_CREATED)->respond($data, $headers);
     }
@@ -83,7 +84,7 @@ class ApiController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondNoContent()
+    protected function respondNoContent()
     {
         return $this->setStatusCode(Response::HTTP_NO_CONTENT)->respond();
     }
@@ -94,7 +95,7 @@ class ApiController extends Controller
      * @param string|null $message
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondNotFound($message = null)
+    protected function respondNotFound($message = null)
     {
         return $this->setStatusCode(Response::HTTP_NOT_FOUND)->respondWithError($message);
     }
@@ -105,7 +106,7 @@ class ApiController extends Controller
      * @param string|null $message
      * @return \Illuminate\Http\JsonResponse
      */
-    public function respondUnprocessable($message = null)
+    protected function respondUnprocessable($message = null)
     {
         return $this->setStatusCode(Response::HTTP_UNPROCESSABLE_ENTITY)->respondWithError($message);
     }
