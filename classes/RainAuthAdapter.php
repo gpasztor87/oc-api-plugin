@@ -20,6 +20,7 @@ class RainAuthAdapter implements AuthInterface
      * Check a user's credentials.
      *
      * @param  array $credentials
+     *
      * @return mixed
      */
     public function byCredentials(array $credentials = [])
@@ -39,6 +40,7 @@ class RainAuthAdapter implements AuthInterface
      * Authenticate a user via the id.
      *
      * @param  mixed $id
+     *
      * @return bool
      */
     public function byId($id)
