@@ -4,9 +4,10 @@ use JWTAuth;
 use Validator;
 use Illuminate\Http\Request;
 use RainLab\User\Models\User;
+use Illuminate\Routing\Controller as BaseController;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-class AuthController extends ApiController
+class AuthController extends BaseController
 {
     use \Autumn\Api\Traits\AdditionalRoutes;
 
@@ -21,35 +22,35 @@ class AuthController extends ApiController
         $credentials = $request->only('email', 'password');
 
         try {
-            if (!$token = JWTAuth::attempt($credentials)) {
-                return $this->setStatusCode(401)->respondWithError('invalid_credentials');
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json(['error' => 'invalid_credentials'], 401);
             }
         }
         catch (JWTException $ex) {
-            return $this->setStatusCode(500)->respondWithError('could_not_create_token');
+            return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        return $this->respond(compact('token'));
+        return response()->json(compact('token'));
     }
 
     public function register(Request $request)
     {
         $data = $request->all();
 
-        if (!array_key_exists('password_confirmation', $request->all())) {
+        if (! array_key_exists('password_confirmation', $request->all())) {
             $data['password_confirmation'] = $request->get('password');
         }
 
         $validator = $this->validator($data);
 
         if ($validator->fails()) {
-            return $this->setStatusCode(400)->respondWithError($validator->getMessageBag());
+            return response()->json(['error' => $validator->getMessageBag()], 400);
         }
 
         $user = User::create($data);
         $token = JWTAuth::fromUser($user);
 
-        return $this->respond(compact('token'));
+        return response()->json(compact('token'));
     }
 
     /**

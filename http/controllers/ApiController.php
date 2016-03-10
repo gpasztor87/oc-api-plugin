@@ -13,11 +13,6 @@ abstract class ApiController extends Controller
     protected $statusCode = Response::HTTP_OK;
 
     /**
-     * @var array
-     */
-    public $publicActions = [];
-
-    /**
      * Get the http status code.
      *
      * @return int

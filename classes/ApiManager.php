@@ -45,7 +45,6 @@ class ApiManager
                 continue;
             }
 
-
             $this->registerResources($resources);
         }
     }
@@ -57,14 +56,15 @@ class ApiManager
 
     public function getRoutes()
     {
-        $this->loadResources();
-        foreach($this->resources as $url => $class) {
+        foreach ($this->getResources() as $url => $class) {
             $resource = App::make($class);
-            $publicActions = $resource->publicActions ?:[];
+            $publicActions = isset($resource->publicActions)
+                ? $resource->publicActions
+                : [];
 
             if (method_exists($resource, 'getAdditionalRoutes')) {
                 $routes = $resource->getAdditionalRoutes();
-                foreach($routes as $_url => $args) {
+                foreach ($routes as $_url => $args) {
                     if (!$routeName = array_get($args, 'name')) {
                         $routeName = 'api.v1.' . strtolower($url) . '.' . strtolower($args['handler']);
                     }
@@ -80,4 +80,12 @@ class ApiManager
             Route::resource($url, $class, ['only' => $publicActions]);
         }
     }
+
+    public function getResources()
+    {
+        $this->loadResources();
+
+        return $this->resources;
+    }
+
 }
