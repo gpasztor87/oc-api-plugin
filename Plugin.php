@@ -44,6 +44,8 @@ class Plugin extends PluginBase
         App::register('Barryvdh\Cors\ServiceProvider');
         App::register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
         App::register('Autumn\Api\ApiServiceProvider');
+
+        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApi');
     }
 
     public function registerAPIResources()
