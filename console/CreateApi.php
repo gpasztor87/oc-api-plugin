@@ -1,8 +1,8 @@
 <?php namespace Autumn\Api\Console;
 
 use Str;
-use Autumn\Api\Templates\Api;
 use Illuminate\Console\Command;
+use Autumn\Api\Classes\ApiGenerator;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -52,7 +52,7 @@ class CreateApi extends Command
             'transformer' => $transformerName
         ];
 
-        Api::make($destinationPath, $vars, $this->option('force'));
+        ApiGenerator::make($destinationPath, $vars, $this->option('force'));
 
         $this->info(sprintf('Successfully generated Api resources for "%s"', $controllerName));
     }
