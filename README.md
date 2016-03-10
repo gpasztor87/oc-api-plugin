@@ -91,14 +91,7 @@ use Acme\Blog\Models\Post;
 use League\Fractal\TransformerAbstract;
 
 class PostTransformer extends TransformerAbstract
-{
-    /**
-     * Resource key.
-     *
-     * @var string
-     */
-    protected $resourceKey = null;
-    
+{   
     /**
      * Turn this item object into a generic array.
      *

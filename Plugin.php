@@ -45,7 +45,7 @@ class Plugin extends PluginBase
         App::register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
         App::register('Autumn\Api\ApiServiceProvider');
 
-        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApi');
+        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApiCommand');
     }
 
     public function registerAPIResources()

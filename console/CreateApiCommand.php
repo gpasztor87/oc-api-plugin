@@ -6,7 +6,7 @@ use Autumn\Api\Classes\ApiGenerator;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class CreateApi extends Command
+class CreateApiCommand extends Command
 {
     /**
      * @var string The console command name.
