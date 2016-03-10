@@ -33,16 +33,15 @@ class CreateApi extends Command
         $authorName = array_pop($parts);
 
         $destinationPath = base_path('plugins') . '/' . strtolower($authorName) . '/' . strtolower($pluginName);
-        $controllerName = $this->argument('controllerName');
-        $transformerName = Str::singular($controllerName) . 'Transformer';
+        $modelName = $this->argument('model');
+        $transformerName = $modelName . 'Transformer';
 
         /*
-         * Determine the model name to use,
-         * either supplied or singular from the controller name.
+         * Determine the controller name to use.
          */
-        $modelName = $this->option('model');
-        if (!$modelName) {
-            $modelName = Str::singular($controllerName);
+        $controllerName = $this->option('controllerName');
+        if (!$controllerName) {
+            $controllerName = Str::plural($modelName);
         }
 
         $vars = [
@@ -65,7 +64,7 @@ class CreateApi extends Command
     {
         return [
             ['pluginCode', InputArgument::REQUIRED, 'The name of the plugin to create. Eg: RainLab.Blog'],
-            ['controllerName', InputArgument::REQUIRED, 'The name of the controller. Eg: Posts'],
+            ['model', InputArgument::REQUIRED, 'The name of the model. Eg: Post'],
         ];
     }
 
@@ -76,7 +75,7 @@ class CreateApi extends Command
     {
         return [
             ['force', null, InputOption::VALUE_NONE, 'Overwrite existing files with generated ones.'],
-            ['model', null, InputOption::VALUE_OPTIONAL, 'Define which model name to use, otherwise the singular controller name is used.'],
+            ['controllerName', null, InputOption::VALUE_OPTIONAL, 'The name of the controller. Eg: Posts'],
         ];
     }
 
