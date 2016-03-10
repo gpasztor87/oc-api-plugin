@@ -29,7 +29,7 @@ trait AdditionalRoutes
     }
 
     /**
-     * Get all additional routes
+     * Get all additional routes.
      *
      * @return array
      */

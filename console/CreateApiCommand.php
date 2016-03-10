@@ -54,7 +54,7 @@ class CreateApiCommand extends Command
 
         ApiGenerator::make($destinationPath, $vars, $this->option('force'));
 
-        $this->info(sprintf('Successfully generated Api resources for "%s"', $controllerName));
+        $this->info(sprintf('Successfully generated Api resources for "%s"', $modelName));
     }
 
     /**
