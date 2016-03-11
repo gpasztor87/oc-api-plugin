@@ -15,10 +15,8 @@ If you do not use Fractal for your transformation layer, this plugin is probably
 
 ## Installation
 
-* Install the [RainLab.User](https://github.com/rainlab/user-plugin) Plugin
 * Extract this repository into plugins/autumn/api
 * In plugins/autumn/api folder run `composer install`.
-* Copy the config/jws.php to the global config folder.
 
 ## Usage
 

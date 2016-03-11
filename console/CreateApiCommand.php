@@ -32,7 +32,7 @@ class CreateApiCommand extends Command
         $pluginName = array_pop($parts);
         $authorName = array_pop($parts);
 
-        $destinationPath = base_path('plugins') . '/' . strtolower($authorName) . '/' . strtolower($pluginName);
+        $destinationPath = base_path('plugins/' . strtolower($authorName) . '/' . strtolower($pluginName));
         $modelName = $this->argument('model');
         $transformerName = $modelName . 'Transformer';
 

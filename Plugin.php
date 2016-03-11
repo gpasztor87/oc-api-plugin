@@ -10,11 +10,6 @@ use Illuminate\Foundation\AliasLoader;
 class Plugin extends PluginBase
 {
     /**
-     * @var array Plugin dependencies
-     */
-    public $require = ['RainLab.User'];
-
-    /**
      * Returns information about this plugin.
      *
      * @return array
@@ -38,20 +33,10 @@ class Plugin extends PluginBase
     {
         $alias = AliasLoader::getInstance();
         $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
-        $alias->alias('JWTAuth', 'Tymon\JWTAuth\Facades\JWTAuth');
 
         App::register('Spatie\Fractal\FractalServiceProvider');
         App::register('Barryvdh\Cors\ServiceProvider');
-        App::register('Tymon\JWTAuth\Providers\JWTAuthServiceProvider');
-        App::register('Autumn\Api\ApiServiceProvider');
 
         $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApiCommand');
-    }
-
-    public function registerAPIResources()
-    {
-        return [
-            'auth' => 'Autumn\Api\Http\Controllers\AuthController',
-        ];
     }
 }

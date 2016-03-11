@@ -2,9 +2,9 @@
 
 use {{studly_author}}\{{studly_plugin}}\Models\{{studly_model}};
 use {{studly_author}}\{{studly_plugin}}\Http\Transformers\{{studly_transformer}};
-use Autumn\Api\Http\Controllers\ApiController;
+use Autumn\Api\Classes\BaseController;
 
-class {{studly_controller}} extends ApiController
+class {{studly_controller}} extends BaseController
 {
     public $publicActions = ['index', 'show'];
 
