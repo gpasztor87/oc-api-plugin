@@ -51,7 +51,7 @@ In the controller you can register your API endpoints via `$publicActions` prope
 
 use Acme\Blog\Models\Post;
 use Acme\Blog\Http\Transformers\PostTransformer;
-use Autumn\Api\Http\Controllers\ApiController;
+use Autumn\Api\Classes\ApiController;
 
 class PostsController extends ApiController
 {

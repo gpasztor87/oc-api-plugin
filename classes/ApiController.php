@@ -10,7 +10,7 @@ use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use Spatie\Fractal\ArraySerializer;
 
-abstract class BaseController extends Controller
+abstract class ApiController extends Controller
 {
     /**
      * Http status code.
