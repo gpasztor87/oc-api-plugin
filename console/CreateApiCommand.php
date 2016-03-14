@@ -9,12 +9,16 @@ use Symfony\Component\Console\Input\InputArgument;
 class CreateApiCommand extends Command
 {
     /**
-     * @var string The console command name.
+     * The console command name.
+     *
+     * @var string
      */
     protected $name = 'create:api';
 
     /**
-     * @var string The console command description.
+     * The console command description.
+     *
+     * @var string
      */
     protected $description = 'Create api controller and transformer for a given model.';
 
@@ -59,6 +63,8 @@ class CreateApiCommand extends Command
 
     /**
      * Get the console command arguments.
+     *
+     * @return array
      */
     protected function getArguments()
     {
@@ -70,6 +76,8 @@ class CreateApiCommand extends Command
 
     /**
      * Get the console command options.
+     *
+     * @return array
      */
     protected function getOptions()
     {

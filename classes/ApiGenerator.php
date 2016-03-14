@@ -6,7 +6,9 @@ use Exception;
 class ApiGenerator extends TemplateBase
 {
     /**
-     * @var array A mapping of stub to generated file.
+     * A mapping of stub to generated file.
+     *
+     * @var array
      */
     protected $fileMap = [
         'apigenerator/controller.stub'  => 'http/controllers/{{studly_controller}}.php',
@@ -14,7 +16,7 @@ class ApiGenerator extends TemplateBase
     ];
 
     /**
-     * Make a single stub
+     * Make a single stub.
      *
      * @param string $stubName The source filename for the stub.
      *
