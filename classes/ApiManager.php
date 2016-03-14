@@ -58,8 +58,8 @@ class ApiManager
     {
         foreach ($this->getResources() as $url => $class) {
             $resource = App::make($class);
-            $publicActions = isset($resource->publicActions)
-                ? $resource->publicActions
+            $options = isset($resource->publicActions)
+                ? ['only' => $resource->publicActions]
                 : [];
 
             if (method_exists($resource, 'getAdditionalRoutes')) {
@@ -77,7 +77,7 @@ class ApiManager
                 }
             }
 
-            Route::resource($url, $class, ['only' => $publicActions]);
+            Route::resource($url, $class, $options);
         }
     }
 

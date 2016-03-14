@@ -6,8 +6,6 @@ use Autumn\Api\Classes\ApiController;
 
 class {{studly_controller}} extends ApiController
 {
-    public $publicActions = ['index', 'show'];
-
     /**
      * Eloquent model.
      *
