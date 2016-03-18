@@ -397,39 +397,15 @@ abstract class ApiController extends Controller
     }
 
     /**
-     * Generate a Response with a 403 HTTP header and a given message.
+     * Generate a Response with a 400 HTTP header and a given message.
      *
-     * @param $message
-     *
-     * @return Response
-     */
-    protected function errorForbidden($message = 'Forbidden')
-    {
-        return $this->setStatusCode(Response::HTTP_FORBIDDEN)->respondWithError($message);
-    }
-
-    /**
-     * Generate a Response with a 500 HTTP header and a given message.
-     *
-     * @param string $message
+     * @param string$message
      *
      * @return Response
      */
-    protected function errorInternalError($message = 'Internal Error')
+    protected function errorWrongArgs($message = 'Wrong Arguments')
     {
-        return $this->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
-    }
-
-    /**
-     * Generate a Response with a 404 HTTP header and a given message.
-     *
-     * @param string $message
-     *
-     * @return Response
-     */
-    protected function errorNotFound($message = 'Resource Not Found')
-    {
-        return $this->setStatusCode(Response::HTTP_NOT_FOUND)->respondWithError($message);
+        return $this->setStatusCode(Response::HTTP_BAD_REQUEST)->respondWithError($message);
     }
 
     /**
@@ -445,15 +421,51 @@ abstract class ApiController extends Controller
     }
 
     /**
-     * Generate a Response with a 400 HTTP header and a given message.
+     * Generate a Response with a 403 HTTP header and a given message.
      *
-     * @param string$message
+     * @param $message
      *
      * @return Response
      */
-    protected function errorWrongArgs($message = 'Wrong Arguments')
+    protected function errorForbidden($message = 'Forbidden')
     {
-        return $this->setStatusCode(Response::HTTP_BAD_REQUEST)->respondWithError($message);
+        return $this->setStatusCode(Response::HTTP_FORBIDDEN)->respondWithError($message);
+    }
+
+    /**
+     * Generate a Response with a 404 HTTP header and a given message.
+     *
+     * @param string $message
+     *
+     * @return Response
+     */
+    protected function errorNotFound($message = 'Resource Not Found')
+    {
+        return $this->setStatusCode(Response::HTTP_NOT_FOUND)->respondWithError($message);
+    }
+
+    /**
+     * Generate a Response with a 405 HTTP header and a given message.
+     *
+     * @param string $message
+     *
+     * @return Response
+     */
+    protected function errorNotAllowed($message = 'Method Not Allowed')
+    {
+        return $this->setStatusCode(Response::HTTP_METHOD_NOT_ALLOWED)->respondWithError($message);
+    }
+
+    /**
+     * Generate a Response with a 500 HTTP header and a given message.
+     *
+     * @param string $message
+     *
+     * @return Response
+     */
+    protected function errorInternalError($message = 'Internal Error')
+    {
+        return $this->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
     }
 
     /**
