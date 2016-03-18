@@ -399,7 +399,7 @@ abstract class ApiController extends Controller
     /**
      * Generate a Response with a 400 HTTP header and a given message.
      *
-     * @param string$message
+     * @param string $message
      *
      * @return Response
      */
@@ -423,7 +423,7 @@ abstract class ApiController extends Controller
     /**
      * Generate a Response with a 403 HTTP header and a given message.
      *
-     * @param $message
+     * @param string $message
      *
      * @return Response
      */
