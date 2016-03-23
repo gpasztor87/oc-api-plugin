@@ -37,6 +37,6 @@ class Plugin extends PluginBase
         App::register('Spatie\Fractal\FractalServiceProvider');
         App::register('Barryvdh\Cors\ServiceProvider');
 
-        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApiCommand');
+        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApi');
     }
 }
