@@ -2,7 +2,6 @@
 
 use App;
 use System\Classes\PluginBase;
-use Illuminate\Foundation\AliasLoader;
 
 /**
  * Api Plugin Information File
@@ -31,10 +30,6 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        $alias = AliasLoader::getInstance();
-        $alias->alias('Fractal', 'Spatie\Fractal\FractalFacade');
-
-        App::register('Spatie\Fractal\FractalServiceProvider');
         App::register('Barryvdh\Cors\ServiceProvider');
 
         $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApi');

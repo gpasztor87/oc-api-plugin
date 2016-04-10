@@ -3,8 +3,8 @@
     "description": "Api plugin for OctoberCMS",
     "keywords": ["october", "cms", "octobercms", "api", "fractal"],
     "require": {
-        "spatie/laravel-fractal": "^1.7",
-        "barryvdh/laravel-cors": "^0.7.1"
+        "league/fractal": "0.13.*",
+        "barryvdh/laravel-cors": "0.7.*"
     },
     "minimum-stability": "dev"
 }
