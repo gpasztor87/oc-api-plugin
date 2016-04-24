@@ -74,7 +74,7 @@ class ApiManager
                     $_url = $url.'/'.$_url;
                     app('router')->{$args['verb']}($_url, [
                         'as'   => $routeName,
-                        'uses' => $class.'@'.$args['handler']
+                        'uses' => $class.'@'.$args['handler'],
                     ]);
                 }
             }
