@@ -1,6 +1,7 @@
-<?php namespace Autumn\Api\Classes;
+<?php
 
-use Validator;
+namespace Autumn\Api\Classes;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -9,6 +10,7 @@ use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Serializer\ArraySerializer;
+use Validator;
 
 abstract class ApiController extends Controller
 {
@@ -333,7 +335,7 @@ abstract class ApiController extends Controller
     }
 
     /**
-     * Send the response as json
+     * Send the response as json.
      *
      * @param array $data
      * @param array $headers
@@ -346,7 +348,7 @@ abstract class ApiController extends Controller
     }
 
     /**
-     * Send the error response as json
+     * Send the error response as json.
      *
      * @param string $message
      *
@@ -356,9 +358,9 @@ abstract class ApiController extends Controller
     {
         return $this->respond([
             'error' => [
-                'message' => $message,
+                'message'     => $message,
                 'status_code' => $this->statusCode
-            ]
+            ],
         ]);
     }
 

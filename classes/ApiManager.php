@@ -1,4 +1,6 @@
-<?php namespace Autumn\Api\Classes;
+<?php
+
+namespace Autumn\Api\Classes;
 
 use App;
 use Route;
@@ -9,7 +11,7 @@ class ApiManager
     use \October\Rain\Support\Traits\Singleton;
 
     /**
-     * Internal use. Keep record of all register resources of the API
+     * Internal use. Keep record of all register resources of the API.
      *
      * @var array
      */
@@ -36,7 +38,7 @@ class ApiManager
         $plugins = $this->pluginManager->getPlugins();
 
         foreach ($plugins as $id => $plugin) {
-            if(!method_exists($plugin, 'registerAPIResources')) {
+            if (!method_exists($plugin, 'registerAPIResources')) {
                 continue;
             }
 
@@ -66,13 +68,13 @@ class ApiManager
                 $routes = $resource->getAdditionalRoutes();
                 foreach ($routes as $_url => $args) {
                     if (!$routeName = array_get($args, 'name')) {
-                        $routeName = 'api.v1.' . strtolower($url) . '.' . strtolower($args['handler']);
+                        $routeName = 'api.v1.'.strtolower($url).'.'.strtolower($args['handler']);
                     }
 
-                    $_url = $url . '/' . $_url;
+                    $_url = $url.'/'.$_url;
                     app('router')->{$args['verb']}($_url, [
-                        'as' => $routeName,
-                        'uses' => $class . '@' . $args['handler']
+                        'as'   => $routeName,
+                        'uses' => $class . '@'.$args['handler']
                     ]);
                 }
             }
@@ -87,5 +89,4 @@ class ApiManager
 
         return $this->resources;
     }
-
 }

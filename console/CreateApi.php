@@ -1,4 +1,6 @@
-<?php namespace Autumn\Api\Console;
+<?php
+
+namespace Autumn\Api\Console;
 
 use Str;
 use October\Rain\Scaffold\GeneratorCommand;
@@ -63,13 +65,12 @@ class CreateApi extends GeneratorCommand
         }
 
         return [
-            'model' => $model,
-            'author' => $author,
-            'plugin' => $plugin,
-            'controller' => $controller,
+            'model'       => $model,
+            'author'      => $author,
+            'plugin'      => $plugin,
+            'controller'  => $controller,
             'transformer' => $transformer
         ];
-
     }
 
     /**
@@ -97,5 +98,4 @@ class CreateApi extends GeneratorCommand
             ['controller', null, InputOption::VALUE_OPTIONAL, 'The name of the controller. Eg: Posts'],
         ];
     }
-
 }
