@@ -1,7 +1,10 @@
 #Api plugin
 
+[![Build Status](https://scrutinizer-ci.com/g/gpasztor87/oc-api-plugin/badges/build.png?b=master)](https://scrutinizer-ci.com/g/gpasztor87/oc-api-plugin/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gpasztor87/oc-api-plugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gpasztor87/oc-api-plugin/?branch=master)
+[![StyleCI](https://styleci.io/repos/50492303/shield)](https://styleci.io/repos/50492303)
+
 Tools for building RESTful HTTP + JSON APIs for OctoberCMS.
-**Note**: this is a work in progress.
 
 ## Introduction
 

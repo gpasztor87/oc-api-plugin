@@ -359,7 +359,7 @@ abstract class ApiController extends Controller
         return $this->respond([
             'error' => [
                 'message'     => $message,
-                'status_code' => $this->statusCode
+                'status_code' => $this->statusCode,
             ],
         ]);
     }

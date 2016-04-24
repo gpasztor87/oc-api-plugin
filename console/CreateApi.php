@@ -2,10 +2,10 @@
 
 namespace Autumn\Api\Console;
 
-use Str;
 use October\Rain\Scaffold\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
+use Str;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class CreateApi extends GeneratorCommand
 {
@@ -54,7 +54,7 @@ class CreateApi extends GeneratorCommand
         $author = array_pop($parts);
 
         $model = $this->argument('model');
-        $transformer = $model . 'Transformer';
+        $transformer = $model.'Transformer';
 
         /*
          * Determine the controller name to use.
@@ -69,7 +69,7 @@ class CreateApi extends GeneratorCommand
             'author'      => $author,
             'plugin'      => $plugin,
             'controller'  => $controller,
-            'transformer' => $transformer
+            'transformer' => $transformer,
         ];
     }
 

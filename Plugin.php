@@ -1,10 +1,12 @@
-<?php namespace Autumn\Api;
+<?php
+
+namespace Autumn\Api;
 
 use App;
 use System\Classes\PluginBase;
 
 /**
- * Api Plugin Information File
+ * Api Plugin Information File.
  */
 class Plugin extends PluginBase
 {
@@ -19,7 +21,7 @@ class Plugin extends PluginBase
             'name'        => 'Api',
             'description' => 'Tools for building RESTful HTTP + JSON APIs.',
             'author'      => 'Autumn',
-            'icon'        => 'icon-paper-plane'
+            'icon'        => 'icon-paper-plane',
         ];
     }
 
