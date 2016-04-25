@@ -1,8 +1,11 @@
 {
     "name": "autumn/api",
     "description": "Api plugin for OctoberCMS",
-    "keywords": ["october", "cms", "octobercms", "api", "fractal"],
+    "homepage": "https://github.com/gpasztor87/oc-api-plugin",
+    "license": "MIT",
+    "keywords": ["october", "cms", "octobercms", "api", "fractal", "rest", "generator"],
     "require": {
+        "php": ">=5.4.0",
         "league/fractal": "0.13.*",
         "barryvdh/laravel-cors": "0.7.*"
     },

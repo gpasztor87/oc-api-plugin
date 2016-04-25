@@ -246,7 +246,7 @@ abstract class ApiController extends Controller
 
         $item->delete();
 
-        return response()->json(['message' => 'Deleted']);
+        return $this->respond(['message' => 'Deleted']);
     }
 
     /**
