@@ -9,5 +9,8 @@
         "league/fractal": "0.13.*",
         "barryvdh/laravel-cors": "0.7.*"
     },
+    "require-dev": {
+        "october/rain": "dev-develop"
+    },
     "minimum-stability": "dev"
 }
