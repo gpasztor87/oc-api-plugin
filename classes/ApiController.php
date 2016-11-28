@@ -9,7 +9,6 @@ use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
-use League\Fractal\Serializer\ArraySerializer;
 use Validator;
 
 abstract class ApiController extends Controller
