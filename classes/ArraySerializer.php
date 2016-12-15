@@ -23,7 +23,7 @@ class ArraySerializer extends FractalArraySerializer
      * Serialize an item.
      *
      * @param string $resourceKey
-     * @param array $data
+     * @param array  $data
      *
      * @return array
      */
