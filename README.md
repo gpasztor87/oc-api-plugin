@@ -83,6 +83,8 @@ class PostsController extends ApiController
 
 ```
 
+You can customize this stub as much as you want.
+
 3) Finally the generator creates a fractal Transformer
 
 ```php
@@ -111,7 +113,17 @@ class PostTransformer extends TransformerAbstract
 
 ```
 
+This stub is customizable too.
+
 The list of routes that are available out of the box:
 
 1. `GET api/v1/blog/posts`
 2. `GET api/v1/blog/posts/{id}`
+
+Request and response format is json
+Fractal includes are supported via $_GET['include'].
+Validation rules for create and update can be set by overwriting `rulesForCreate` and `rulesForUpdate` in your controller.
+
+This skeleton is not a silver bullet but in many cases it can be either exactly what you need or can be used as a decent starting point for your api.
+
+You can check https://github.com/gpasztor87/oc-api-plugin/blob/master/classes/ApiController.php for more info.
