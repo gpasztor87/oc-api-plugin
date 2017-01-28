@@ -14,6 +14,19 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function register()
     {
-        $this->app['router']->middleware('throttle', ThrottleRequests::class);
+        $this->addMiddlewareAlias('api.throttle', ThrottleRequests::class);
+    }
+
+    /**
+     * Register a short-hand name for a middleware.
+     *
+     * @param string $name
+     * @param string $class
+     */
+    protected function addMiddlewareAlias($name, $class)
+    {
+        $router = $this->app['router'];
+
+        $router->middleware($name, $class);
     }
 }

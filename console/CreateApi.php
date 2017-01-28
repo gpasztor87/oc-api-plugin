@@ -51,7 +51,11 @@ class CreateApi extends GeneratorCommand
     {
         parent::fire();
 
-        $this->addRoute();
+        $routeExists = Route::has('api.v1.'.Str::lower($this->vars['controller']).'.index');
+
+        if (! $routeExists) {
+            $this->addRoute();
+        }
     }
 
     /**
@@ -59,12 +63,6 @@ class CreateApi extends GeneratorCommand
      */
     protected function addRoute()
     {
-        $routeExists = Route::has('api.v1.'.Str::lower($this->vars['controller']).'.index');
-
-        if ($routeExists) {
-            return false;
-        }
-
         $stubName = 'api/route.stub';
 
         $sourceFile = $this->getSourcePath().'/'.$stubName;
