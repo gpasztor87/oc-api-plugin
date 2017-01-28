@@ -33,16 +33,17 @@ To achieve that you need to do lots of boilerplate operations - create controlle
 ```php artisan create:api Acme.Blog Post``` does all the work for you.
 
 
-1. To register your API resources you need to add `registerAPIResources` function to your Plugin.php:
+1. The generator creates a routes.php which looks like that:
 
 ```php
 
-    public function registerAPIResources()
-    {
-        return [
-            'blog/posts' => 'Acme\Blog\Http\Controllers\Posts'
-        ];
-    }
+<?php
+
+    Route::group(['prefix' => 'api/v1'], function() {
+        //
+        Route::resource('posts', 'Acme\Blog\Controllers\Posts');
+    });
+    
 ```
 
 2) The generator creates a controller that extends base api controller.
@@ -57,9 +58,7 @@ use Acme\Blog\Http\Transformers\PostTransformer;
 use Autumn\Api\Classes\ApiController;
 
 class PostsController extends ApiController
-{
-    public $publicActions = ['index', 'show'];
-    
+{   
     /**
      * Eloquent model.
      *
@@ -119,6 +118,9 @@ The list of routes that are available out of the box:
 
 1. `GET api/v1/blog/posts`
 2. `GET api/v1/blog/posts/{id}`
+3. `POST api/v1/blog/posts`
+4. `PUT api/v1/blog/posts/{id}`
+5. `DELETE api/v1/blog/posts/{id}`
 
 Request and response format is json
 Fractal includes are supported via $_GET['include'].

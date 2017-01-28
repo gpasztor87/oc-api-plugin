@@ -2,14 +2,14 @@
 
 namespace Autumn\Api\Classes;
 
+use Validator;
+use League\Fractal\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
-use Validator;
 
 abstract class ApiController extends Controller
 {
