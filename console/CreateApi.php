@@ -144,8 +144,8 @@ class CreateApi extends GeneratorCommand
     /**
      * Save the given resource to the given routes file.
      *
-     * @param $destinationFile
-     * @param $destinationContent
+     * @param string $destinationFile
+     * @param string $destinationContent
      */
     protected function saveResource($destinationFile, $destinationContent)
     {
