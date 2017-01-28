@@ -4,8 +4,8 @@ namespace Autumn\Api\Console;
 
 use Str;
 use October\Rain\Scaffold\GeneratorCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class CreateApi extends GeneratorCommand
 {
@@ -36,7 +36,7 @@ class CreateApi extends GeneratorCommand
      * @var array
      */
     protected $stubs = [
-        'api/controller.stub'  => 'http/controllers/{{studly_controller}}.php',
+        'api/controller.stub' => 'http/controllers/{{studly_controller}}.php',
         'api/transformer.stub' => 'http/transformers/{{studly_transformer}}.php',
         'api/routes.stub' => 'routes.php',
     ];
@@ -60,16 +60,16 @@ class CreateApi extends GeneratorCommand
     {
         $stubName = 'api/route.stub';
 
-        $sourceFile = $this->getSourcePath() . '/' . $stubName;
-        $destinationFile = $this->getDestinationPath() . '/routes.php';
+        $sourceFile = $this->getSourcePath().'/'.$stubName;
+        $destinationFile = $this->getDestinationPath().'/routes.php';
         $destinationContent = $this->files->get($sourceFile);
 
         /*
          * Parse each variable in to the destination content and path
          */
         foreach ($this->vars as $key => $var) {
-            $destinationContent = str_replace('{{' . $key . '}}', $var, $destinationContent);
-            $destinationFile = str_replace('{{' . $key . '}}', $var, $destinationFile);
+            $destinationContent = str_replace('{{'.$key.'}}', $var, $destinationContent);
+            $destinationFile = str_replace('{{'.$key.'}}', $var, $destinationFile);
         }
 
         $this->saveResource($destinationFile, $destinationContent);
@@ -95,15 +95,15 @@ class CreateApi extends GeneratorCommand
          * Determine the controller name to use.
          */
         $controller = $this->option('controller');
-        if (!$controller) {
+        if (! $controller) {
             $controller = Str::plural($model);
         }
 
         return [
-            'model'       => $model,
-            'author'      => $author,
-            'plugin'      => $plugin,
-            'controller'  => $controller,
+            'model' => $model,
+            'author' => $author,
+            'plugin' => $plugin,
+            'controller' => $controller,
             'transformer' => $transformer,
         ];
     }
@@ -135,7 +135,8 @@ class CreateApi extends GeneratorCommand
     }
 
     /**
-     *  Save the given resource to the given routes file.
+     * Save the given resource to the given routes file.
+     *
      * @param $destinationFile
      * @param $destinationContent
      */
@@ -149,7 +150,6 @@ class CreateApi extends GeneratorCommand
         if (strcmp($lastLine, '});') === 0) {
             $lines[count($lines) - 1] = '    '.$destinationContent;
             $lines[] = "\r\n});\r\n";
-
         } else {
             $lines[] = "$destinationContent\r\n";
         }

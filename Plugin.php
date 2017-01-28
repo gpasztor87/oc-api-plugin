@@ -18,10 +18,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Api',
+            'name' => 'Api',
             'description' => 'Tools for building RESTful HTTP + JSON APIs.',
-            'author'      => 'Autumn',
-            'icon'        => 'icon-paper-plane',
+            'author' => 'Autumn',
+            'icon' => 'icon-paper-plane',
         ];
     }
 
