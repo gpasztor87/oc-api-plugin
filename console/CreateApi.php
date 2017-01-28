@@ -3,6 +3,7 @@
 namespace Autumn\Api\Console;
 
 use Str;
+use Route;
 use October\Rain\Scaffold\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -58,6 +59,12 @@ class CreateApi extends GeneratorCommand
      */
     protected function addRoute()
     {
+        $routeExists = Route::has('api.v1.'.Str::lower($this->vars['controller']).'.index');
+
+        if ($routeExists) {
+            return false;
+        }
+
         $stubName = 'api/route.stub';
 
         $sourceFile = $this->getSourcePath().'/'.$stubName;
