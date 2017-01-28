@@ -36,6 +36,7 @@ class ThrottleRequests
      * @param  \Closure  $next
      * @param  int  $maxAttempts
      * @param  float|int  $decayMinutes
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $maxAttempts = 60, $decayMinutes = 1)
@@ -102,6 +103,7 @@ class ThrottleRequests
      * @param  int  $maxAttempts
      * @param  int  $remainingAttempts
      * @param  int|null  $retryAfter
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function addHeaders(Response $response, $maxAttempts, $remainingAttempts, $retryAfter = null)
