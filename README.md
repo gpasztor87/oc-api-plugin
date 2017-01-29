@@ -133,3 +133,21 @@ Validation rules for create and update can be set by overwriting `rulesForCreate
 This skeleton is not a silver bullet but in many cases it can be either exactly what you need or can be used as a decent starting point for your api.
 
 You can check https://github.com/gpasztor87/oc-api-plugin/blob/master/classes/ApiController.php for more info.
+
+## Rate Limiting
+
+Rate Limiting (throttling) allows you to limit the number of requests a client can make in a given amount of time.
+A limit and the expiration time is defined by a throttle. By default the package has two throttles,
+an authenticated throttle and an unauthenticated throttle.
+
+### Enabling Rate Limiting
+
+To enable rate limiting for a route or group of routes you must enable the api.throttle middleware.
+
+```php
+    Route::group(['prefix' => 'api/v1', 'middleware' => ['api.throttle:100,5']]], function() {
+        // Routes
+    });
+```
+
+This would set a request limit of 100 with an expiration time of 5 minutes for this group.
