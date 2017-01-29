@@ -4,7 +4,9 @@ namespace Autumn\Api;
 
 use App;
 use System\Classes\PluginBase;
+use Autumn\Api\Console\CreateApi;
 use Autumn\Api\Providers\ServiceProvider;
+use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 
 /**
  * Api Plugin Information File.
@@ -33,9 +35,9 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        App::register(\Barryvdh\Cors\ServiceProvider::class);
+        App::register(CorsServiceProvider::class);
         App::register(ServiceProvider::class);
 
-        $this->registerConsoleCommand('create.api', \Autumn\Api\Console\CreateApi::class);
+        $this->registerConsoleCommand('create.api', CreateApi::class);
     }
 }
