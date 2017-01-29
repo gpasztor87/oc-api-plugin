@@ -70,7 +70,7 @@ class CreateApi extends GeneratorCommand
     {
         try {
             parent::makeStub($stubName);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return;
         }
     }
