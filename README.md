@@ -41,7 +41,7 @@ To achieve that you need to do lots of boilerplate operations - create controlle
 
     Route::group(['prefix' => 'api/v1'], function() {
         //
-        Route::resource('blog.posts', 'Acme\Blog\Controllers\Posts');
+        Route::resource('posts', 'Acme\Blog\Controllers\Posts');
     });
     
 ```
