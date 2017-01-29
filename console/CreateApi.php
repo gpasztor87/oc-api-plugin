@@ -53,7 +53,7 @@ class CreateApi extends GeneratorCommand
         parent::fire();
 
         $routeExists = Route::has(
-            'api.v1.'.$this->vars['lower_plugin'].'.'.$this->vars['lower_controller'].'.index'
+            'api.v1.'.$this->vars['lower_controller'].'.index'
         );
 
         if (! $routeExists) {

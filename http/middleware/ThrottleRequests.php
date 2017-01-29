@@ -13,7 +13,7 @@ class ThrottleRequests
     /**
      * The rate limiter instance.
      *
-     * @var \Illuminate\Cache\RateLimiter
+     * @var \Autumn\Api\Classes\RateLimiter
      */
     protected $limiter;
 
