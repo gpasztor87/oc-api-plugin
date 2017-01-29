@@ -1,4 +1,6 @@
-<?php namespace {{studly_author}}\{{studly_plugin}}\Http\Controllers;
+<?php
+
+namespace {{studly_author}}\{{studly_plugin}}\Http\Controllers;
 
 use {{studly_author}}\{{studly_plugin}}\Models\{{studly_model}};
 use {{studly_author}}\{{studly_plugin}}\Http\Transformers\{{studly_transformer}};

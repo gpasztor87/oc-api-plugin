@@ -2,14 +2,14 @@
 
 namespace Autumn\Api\Classes;
 
+use Validator;
+use League\Fractal\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use League\Fractal\Resource\Item;
 use Illuminate\Routing\Controller;
-use League\Fractal\Manager;
 use League\Fractal\Pagination\Cursor;
 use League\Fractal\Resource\Collection;
-use League\Fractal\Resource\Item;
-use Validator;
 
 abstract class ApiController extends Controller
 {
@@ -157,7 +157,7 @@ abstract class ApiController extends Controller
     {
         $data = $this->request->json()->get($this->resourceKeySingular);
 
-        if (!$data) {
+        if (! $data) {
             return $this->errorWrongArgs('Empty data');
         }
 
@@ -186,7 +186,7 @@ abstract class ApiController extends Controller
         $with = $this->getEagerLoad();
 
         $item = $this->findItem($id, $with);
-        if (!$item) {
+        if (! $item) {
             return $this->errorNotFound();
         }
 
@@ -205,12 +205,12 @@ abstract class ApiController extends Controller
     {
         $data = $this->request->json()->get($this->resourceKeySingular);
 
-        if (!$data) {
+        if (! $data) {
             return $this->errorWrongArgs('Empty data');
         }
 
         $item = $this->findItem($id);
-        if (!$item) {
+        if (! $item) {
             return $this->errorNotFound();
         }
 
@@ -239,7 +239,7 @@ abstract class ApiController extends Controller
     {
         $item = $this->findItem($id);
 
-        if (!$item) {
+        if (! $item) {
             return $this->errorNotFound();
         }
 
@@ -357,7 +357,7 @@ abstract class ApiController extends Controller
     {
         return $this->respond([
             'error' => [
-                'message'     => $message,
+                'message' => $message,
                 'status_code' => $this->statusCode,
             ],
         ]);

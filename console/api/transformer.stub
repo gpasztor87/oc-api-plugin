@@ -1,4 +1,6 @@
-<?php namespace {{studly_author}}\{{studly_plugin}}\Http\Transformers;
+<?php
+
+namespace {{studly_author}}\{{studly_plugin}}\Http\Transformers;
 
 use {{studly_author}}\{{studly_plugin}}\Models\{{studly_model}};
 use League\Fractal\TransformerAbstract;

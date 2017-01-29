@@ -4,6 +4,9 @@ namespace Autumn\Api;
 
 use App;
 use System\Classes\PluginBase;
+use Autumn\Api\Console\CreateApi;
+use Autumn\Api\Providers\ServiceProvider;
+use Barryvdh\Cors\ServiceProvider as CorsServiceProvider;
 
 /**
  * Api Plugin Information File.
@@ -18,10 +21,10 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Api',
+            'name' => 'Api',
             'description' => 'Tools for building RESTful HTTP + JSON APIs.',
-            'author'      => 'Autumn',
-            'icon'        => 'icon-paper-plane',
+            'author' => 'Autumn',
+            'icon' => 'icon-paper-plane',
         ];
     }
 
@@ -32,8 +35,9 @@ class Plugin extends PluginBase
      */
     public function register()
     {
-        App::register('Barryvdh\Cors\ServiceProvider');
+        App::register(CorsServiceProvider::class);
+        App::register(ServiceProvider::class);
 
-        $this->registerConsoleCommand('create.api', 'Autumn\Api\Console\CreateApi');
+        $this->registerConsoleCommand('create.api', CreateApi::class);
     }
 }

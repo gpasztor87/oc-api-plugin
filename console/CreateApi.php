@@ -2,10 +2,12 @@
 
 namespace Autumn\Api\Console;
 
-use October\Rain\Scaffold\GeneratorCommand;
 use Str;
-use Symfony\Component\Console\Input\InputArgument;
+use Route;
+use Exception;
+use October\Rain\Scaffold\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 
 class CreateApi extends GeneratorCommand
 {
@@ -36,9 +38,64 @@ class CreateApi extends GeneratorCommand
      * @var array
      */
     protected $stubs = [
-        'api/controller.stub'  => 'http/controllers/{{studly_controller}}.php',
+        'api/controller.stub' => 'http/controllers/{{studly_controller}}.php',
         'api/transformer.stub' => 'http/transformers/{{studly_transformer}}.php',
+        'api/routes.stub' => 'routes.php',
     ];
+
+    /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     */
+    public function fire()
+    {
+        parent::fire();
+
+        $routeExists = Route::has(
+            'api.v1.'.$this->vars['lower_controller'].'.index'
+        );
+
+        if (! $routeExists) {
+            $this->addRoute();
+        }
+    }
+
+    /**
+     * Make a single stub.
+     *
+     * @param string $stubName The source filename for the stub.
+     */
+    public function makeStub($stubName)
+    {
+        try {
+            parent::makeStub($stubName);
+        } catch (Exception $e) {
+            return;
+        }
+    }
+
+    /**
+     *  Add routes to routes file.
+     */
+    protected function addRoute()
+    {
+        $stubName = 'api/route.stub';
+
+        $sourceFile = $this->getSourcePath().'/'.$stubName;
+        $destinationFile = $this->getDestinationPath().'/routes.php';
+        $destinationContent = $this->files->get($sourceFile);
+
+        /*
+         * Parse each variable in to the destination content and path
+         */
+        foreach ($this->vars as $key => $var) {
+            $destinationContent = str_replace('{{'.$key.'}}', $var, $destinationContent);
+            $destinationFile = str_replace('{{'.$key.'}}', $var, $destinationFile);
+        }
+
+        $this->saveResource($destinationFile, $destinationContent);
+    }
 
     /**
      * Prepare variables for stubs.
@@ -60,15 +117,15 @@ class CreateApi extends GeneratorCommand
          * Determine the controller name to use.
          */
         $controller = $this->option('controller');
-        if (!$controller) {
+        if (! $controller) {
             $controller = Str::plural($model);
         }
 
         return [
-            'model'       => $model,
-            'author'      => $author,
-            'plugin'      => $plugin,
-            'controller'  => $controller,
+            'model' => $model,
+            'author' => $author,
+            'plugin' => $plugin,
+            'controller' => $controller,
             'transformer' => $transformer,
         ];
     }
@@ -97,5 +154,32 @@ class CreateApi extends GeneratorCommand
             ['force', null, InputOption::VALUE_NONE, 'Overwrite existing files with generated ones.'],
             ['controller', null, InputOption::VALUE_OPTIONAL, 'The name of the controller. Eg: Posts'],
         ];
+    }
+
+    /**
+     * Save the given resource to the given routes file.
+     *
+     * @param string $destinationFile
+     * @param string $destinationContent
+     */
+    protected function saveResource($destinationFile, $destinationContent)
+    {
+        // read file
+        $lines = file($destinationFile);
+        $lastLine = trim($lines[count($lines) - 1]);
+
+        // modify file
+        if (strcmp($lastLine, '});') === 0) {
+            $lines[count($lines) - 1] = '    '.$destinationContent;
+            $lines[] = "\r\n});\r\n";
+        } else {
+            $lines[] = "$destinationContent\r\n";
+        }
+
+        // save file
+        $fp = fopen($destinationFile, 'w');
+
+        fwrite($fp, implode('', $lines));
+        fclose($fp);
     }
 }
