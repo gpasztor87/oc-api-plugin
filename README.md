@@ -41,7 +41,7 @@ To achieve that you need to do lots of boilerplate operations - create controlle
 
     Route::group(['prefix' => 'api/v1'], function() {
         //
-        Route::resource('posts', 'Acme\Blog\Controllers\Posts');
+        Route::resource('blog.posts', 'Acme\Blog\Controllers\Posts');
     });
     
 ```
@@ -51,7 +51,9 @@ In the controller you can register your API endpoints via `$publicActions` prope
 
 ```php
 
-<?php namespace Acme\Blog\Http\Controllers;
+<?php
+
+namespace Acme\Blog\Http\Controllers;
 
 use Acme\Blog\Models\Post;
 use Acme\Blog\Http\Transformers\PostTransformer;
@@ -87,7 +89,9 @@ You can customize this stub as much as you want.
 3) Finally the generator creates a fractal Transformer
 
 ```php
-<?php namespace Acme\Blog\Http\Transformers;
+<?php
+
+namespace Acme\Blog\Http\Transformers;
 
 use Acme\Blog\Models\Post;
 use League\Fractal\TransformerAbstract;
